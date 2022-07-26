@@ -1,29 +1,38 @@
 // Desafio 1
 function compareTrue(parametro1, parametro2) {
   
-  if(parametro1 === true && parametro2 === true){
+  if (parametro1 === true && parametro2 === true) {
     return true;
-  } else if(parametro1 === false && parametro2 === false){
+  } else if(parametro1 === false && parametro2 === false) {
     return false;
   } else {
     return false;
   }
-  
+
 }
 
 // Desafio 2
-function calcArea() {
-  // seu código aqui
+function calcArea(base, height) {
+  
+  let area = (base * height) / 2;
+  return area;
+
 }
 
 // Desafio 3
-function splitSentence() {
-  // seu código aqui
+function splitSentence(parametro) {
+  
+  parametro = parametro.split(" ");
+  return parametro;
+
 }
 
 // Desafio 4
-function concatName() {
-  // seu código aqui
+function concatName(parametro) {
+  
+  let frase =  parametro[parametro.length - 1] + ', ' + parametro[0];
+  return frase;
+
 }
 
 // Desafio 5
