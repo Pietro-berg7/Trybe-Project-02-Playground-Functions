@@ -122,9 +122,9 @@ function encode(parametro) {
   }
   parametro = parametro.join("");
   return parametro;
-  
-  
+    
 }
+
 function decode(parametro) {
   
   parametro = parametro.split("");
@@ -147,8 +147,25 @@ function decode(parametro) {
 }
 
 // Desafio 10
-function techList() {
-  // seu código aqui
+function techList(array, string) {
+  
+  let Object = {};
+  let arrayObject = [];
+  array.sort();
+
+  if (array.length === 0) {
+    return 'Vazio!';
+  } else {
+    for (let i = 0; i < array.length; i++) {
+      Object = {
+        tech: array[i],
+        name: string
+      }
+      arrayObject.push(Object);
+    } 
+    return arrayObject; 
+  }
+
 }
 
 module.exports = {
