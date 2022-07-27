@@ -1,13 +1,12 @@
 // Desafio 1
 function compareTrue(parametro1, parametro2) {
-  if (parametro1 === true && parametro2 === true) {
-    return true;
-  }
-  if (parametro1 === false && parametro2 === false) {
-    return false;
+  let valor;
+  if (parametro1 && parametro2) {
+    valor = true;
   } else {
-    return false;
+    valor = false;
   }
+  return valor;
 }
 
 // Desafio 2
@@ -24,7 +23,8 @@ function splitSentence(parametro) {
 
 // Desafio 4
 function concatName(parametro) {
-  let frase = parametro[parametro.length - 1] + ', ' + parametro[0];
+  let string = ', ';
+  let frase = parametro[parametro.length - 1] + string + parametro[0];
   return frase;
 }
 
@@ -37,15 +37,10 @@ function footballPoints(vitorias, empates) {
 // Desafio 6
 function highestCount(parametro) {
   let cont = 0;
-  let maior = parametro[0];
-  for (let i = 1; i < parametro.length; i++) {
-    if (parametro[i] > maior) {
-      maior = parametro[i];
-    }
-  }
-  for (let i = 0; i < parametro.length; i++) {
-    if (parametro[i] === maior) {
-      cont++;
+  parametro.sort((a, b) => a - b);
+  for (let i = 0; i < parametro.length; i += 1) {
+    if (parametro[i] === parametro[parametro.length - 1]) {
+      cont += 1;
     }
   }
   return cont;
@@ -55,31 +50,28 @@ function highestCount(parametro) {
 function catAndMouse(mouse, cat1, cat2) {
   cat1 -= mouse;
   cat2 -= mouse;
-
-  if (cat1 < 0) {
-    cat1 *= -1;
-  } else if (cat2 < 0) {
-    cat2 *= -1;
-  }
-
+  cat1 = Math.abs(cat1);
+  cat2 = Math.abs(cat2);
+  let valor;
   if (cat2 < cat1) {
-    return 'cat2';
+    valor = 'cat2';
   } else if (cat2 > cat1) {
-    return 'cat1';
+    valor = 'cat1';
   } else {
-    return 'os gatos trombam e o rato foge';
+    valor = 'os gatos trombam e o rato foge';
   }
+  return valor;
 }
 
 // Desafio 8
 function fizzBuzz(parametro) {
   let array = [];
-  for (let i = 0; i < parametro.length; i++) {
-    if (parametro[i] % 3 === 0 && parametro[i] % 5 === 0) {
+  for (let index of parametro) {
+    if (index % 3 === 0 && index % 5 === 0) {
       array.push('fizzBuzz');
-    } else if (parametro[i] % 3 === 0 && parametro[i] % 5 !== 0) {
+    } else if (index % 3 === 0) {
       array.push('fizz');
-    } else if (parametro[i] % 3 !== 0 && parametro[i] % 5 === 0) {
+    } else if (index % 5 === 0) {
       array.push('buzz');
     } else {
       array.push('bug!');
@@ -90,40 +82,20 @@ function fizzBuzz(parametro) {
 
 // Desafio 9
 function encode(parametro) {
-  parametro = parametro.split('');
-  for (let i = 0; i < parametro.length; i++) {
-    if (parametro[i] === 'a') {
-      parametro[i] = '1';
-    } else if (parametro[i] === 'e') {
-      parametro[i] = '2';
-    } else if (parametro[i] === 'i') {
-      parametro[i] = '3';
-    } else if (parametro[i] === 'o') {
-      parametro[i] = '4';
-    } else if (parametro[i] === 'u') {
-      parametro[i] = '5';
-    }
-  }
-  parametro = parametro.join('');
+  parametro = parametro.replaceAll('a', '1');
+  parametro = parametro.replaceAll('e', '2');
+  parametro = parametro.replaceAll('i', '3');
+  parametro = parametro.replaceAll('o', '4');
+  parametro = parametro.replaceAll('u', '5');
   return parametro;
 }
 
 function decode(parametro) {
-  parametro = parametro.split('');
-  for (let i = 0; i < parametro.length; i++) {
-    if (parametro[i] === '1') {
-      parametro[i] = 'a';
-    } else if (parametro[i] === '2') {
-      parametro[i] = 'e';
-    } else if (parametro[i] === '3') {
-      parametro[i] = 'i';
-    } else if (parametro[i] === '4') {
-      parametro[i] = 'o';
-    } else if (parametro[i] === '5') {
-      parametro[i] = 'u';
-    }
-  }
-  parametro = parametro.join('');
+  parametro = parametro.replaceAll('1', 'a');
+  parametro = parametro.replaceAll('2', 'e');
+  parametro = parametro.replaceAll('3', 'i');
+  parametro = parametro.replaceAll('4', 'o');
+  parametro = parametro.replaceAll('5', 'u');
   return parametro;
 }
 
@@ -133,18 +105,20 @@ function techList(array, string) {
   let arrayObject = [];
   array.sort();
 
+  let valor;
   if (array.length === 0) {
-    return 'Vazio!';
+    valor = 'Vazio!';
   } else {
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i += 1) {
       Object = {
         tech: array[i],
         name: string,
       };
       arrayObject.push(Object);
     }
-    return arrayObject;
+    valor = arrayObject;
   }
+  return valor;
 }
 
 module.exports = {

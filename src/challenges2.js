@@ -3,168 +3,57 @@ function generatePhoneNumber(parametro) {
   let cont = 0;
   if (parametro.length !== 11) {
     return 'Array com tamanho incorreto.';
-  } else if (parametro.length === 11) {
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] > 9 || parametro[i] < 0) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 0) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 1) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 2) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 3) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 4) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 5) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 6) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 7) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 8) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    cont = 0;
-    for (let i = 0; i < parametro.length; i++) {
-      if (parametro[i] === 9) {
-        cont++;
-      }
-      if (cont >= 3) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
   }
-
-  if (parametro.length === 11) {
-    let numero =
-      '(' +
-      parametro[0] +
-      parametro[1] +
-      ') ' +
-      parametro[2] +
-      parametro[3] +
-      parametro[4] +
-      parametro[5] +
-      parametro[6] +
-      '-' +
-      parametro[7] +
-      parametro[8] +
-      parametro[9] +
-      parametro[10];
-    return numero;
+  for (let index of parametro) {
+    for (let i = 0; i <= parametro.length; i += 1) {
+      if (index === parametro[i]) {
+        cont += 1;
+      }
+      if (cont >= 3 || index < 0 || index > 9) {
+        return 'não é possível gerar um número de telefone com esses valores';
+      }
+    }
+    cont = 0;
   }
+  return '(' + parametro[0] + parametro[1] + ') ' + parametro[2] + parametro[3] + parametro[4] + parametro[5] + parametro[6] + '-' + parametro[7] + parametro[8] + parametro[9] + parametro[10];
 }
 
 // Desafio 12
 function triangleCheck(lineA, lineB, lineC) {
-  if (
-    lineA < lineB + lineC &&
-    lineA > Math.abs(lineB - lineC) &&
-    lineB < lineA + lineC &&
-    lineB > Math.abs(lineC - lineC) &&
-    lineC < lineB + lineA &&
-    lineC > Math.abs(lineB - lineA)
-  ) {
-    return true;
-  } else if (
-    lineA > lineB + lineC ||
-    lineB > lineA + lineC ||
-    lineC > lineB + lineA
-  ) {
-    return false;
-  } else if (
-    lineA > Math.abs(lineB - lineC) ||
-    lineB > Math.abs(lineC - lineC) ||
-    lineC > Math.abs(lineB - lineA)
-  ) {
-    return false;
+  let valor;
+  if ( lineA < lineB + lineC && lineA > Math.abs(lineB - lineC) && lineB < lineA + lineC && lineB > Math.abs(lineC - lineC) && lineC < lineB + lineA && lineC > Math.abs(lineB - lineA)) {
+    valor = true;
+  } else if (lineA > lineB + lineC || lineB > lineA + lineC || lineC > lineB + lineA) {
+    valor = false;
+  } else if (lineA > Math.abs(lineB - lineC) || lineB > Math.abs(lineC - lineC) || lineC > Math.abs(lineB - lineA)) {
+    valor = false;
   }
+  return valor;
 }
 
 // Desafio 13
 function hydrate(parametro) {
+  let valor;
   let numeros = parametro.replace(/[^0-9]/g, '');
   let total = 0;
   numeros = numeros.split('');
   let arrayNumeros = [];
+  const string1 = ' copo de água';
+  const string2 = ' copos de água';
 
-  for (let i = 0; i < numeros.length; i++) {
+  for (let i = 0; i < numeros.length; i += 1) {
     arrayNumeros.push(parseInt(numeros[i]));
   }
-  for (let i = 0; i < arrayNumeros.length; i++) {
+  for (let i = 0; i < arrayNumeros.length; i += 1) {
     total += arrayNumeros[i];
   }
 
   if (total === 1) {
-    return total + ' copo de água';
+    valor = total + string1;
   } else {
-    return total + ' copos de água';
+    valor = total + string2;
   }
+  return valor;
 }
 
 module.exports = {
