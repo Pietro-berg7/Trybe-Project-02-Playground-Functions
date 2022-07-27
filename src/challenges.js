@@ -1,51 +1,41 @@
 // Desafio 1
 function compareTrue(parametro1, parametro2) {
-  
   if (parametro1 === true && parametro2 === true) {
     return true;
-  } else if(parametro1 === false && parametro2 === false) {
+  }
+  if (parametro1 === false && parametro2 === false) {
     return false;
   } else {
     return false;
   }
-
 }
 
 // Desafio 2
 function calcArea(base, height) {
-  
   let area = (base * height) / 2;
   return area;
-
 }
 
 // Desafio 3
 function splitSentence(parametro) {
-  
-  parametro = parametro.split(" ");
+  parametro = parametro.split(' ');
   return parametro;
-
 }
 
 // Desafio 4
 function concatName(parametro) {
-  
-  let frase =  parametro[parametro.length - 1] + ', ' + parametro[0];
+  let frase = parametro[parametro.length - 1] + ', ' + parametro[0];
   return frase;
-
 }
 
 // Desafio 5
 function footballPoints(vitorias, empates) {
-  
-  let pontuacao = (vitorias * 3) + empates;
+  let pontuacao = vitorias * 3 + empates;
   return pontuacao;
-
 }
 
 // Desafio 6
 function highestCount(parametro) {
-  
   let cont = 0;
   let maior = parametro[0];
   for (let i = 1; i < parametro.length; i++) {
@@ -59,12 +49,10 @@ function highestCount(parametro) {
     }
   }
   return cont;
-
 }
 
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
-  
   cat1 -= mouse;
   cat2 -= mouse;
 
@@ -81,12 +69,10 @@ function catAndMouse(mouse, cat1, cat2) {
   } else {
     return 'os gatos trombam e o rato foge';
   }
-
 }
 
 // Desafio 8
 function fizzBuzz(parametro) {
-  
   let array = [];
   for (let i = 0; i < parametro.length; i++) {
     if (parametro[i] % 3 === 0 && parametro[i] % 5 === 0) {
@@ -100,14 +86,12 @@ function fizzBuzz(parametro) {
     }
   }
   return array;
-
 }
 
 // Desafio 9
 function encode(parametro) {
-  
-  parametro = parametro.split("");
-  for(let i = 0; i < parametro.length; i++) {
+  parametro = parametro.split('');
+  for (let i = 0; i < parametro.length; i++) {
     if (parametro[i] === 'a') {
       parametro[i] = '1';
     } else if (parametro[i] === 'e') {
@@ -118,17 +102,15 @@ function encode(parametro) {
       parametro[i] = '4';
     } else if (parametro[i] === 'u') {
       parametro[i] = '5';
-    } 
+    }
   }
-  parametro = parametro.join("");
+  parametro = parametro.join('');
   return parametro;
-    
 }
 
 function decode(parametro) {
-  
-  parametro = parametro.split("");
-  for(let i = 0; i < parametro.length; i++) {
+  parametro = parametro.split('');
+  for (let i = 0; i < parametro.length; i++) {
     if (parametro[i] === '1') {
       parametro[i] = 'a';
     } else if (parametro[i] === '2') {
@@ -139,16 +121,14 @@ function decode(parametro) {
       parametro[i] = 'o';
     } else if (parametro[i] === '5') {
       parametro[i] = 'u';
-    } 
+    }
   }
-  parametro = parametro.join("");
+  parametro = parametro.join('');
   return parametro;
-  
 }
 
 // Desafio 10
 function techList(array, string) {
-  
   let Object = {};
   let arrayObject = [];
   array.sort();
@@ -159,13 +139,12 @@ function techList(array, string) {
     for (let i = 0; i < array.length; i++) {
       Object = {
         tech: array[i],
-        name: string
-      }
+        name: string,
+      };
       arrayObject.push(Object);
-    } 
-    return arrayObject; 
+    }
+    return arrayObject;
   }
-
 }
 
 module.exports = {
