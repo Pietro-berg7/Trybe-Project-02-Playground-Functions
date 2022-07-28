@@ -1,32 +1,40 @@
 // Desafio 11
-function generatePhoneNumber(number) {
+function generatePhoneNumber(n) {
   let count = 0;
-  if (number.length !== 11) {
+  if (n.length !== 11) {
     return 'Array com tamanho incorreto.';
   }
-  for (let i = 0; i < number.length; i += 1) {
-    for (let j = 0; j <= number.length; j += 1) {
-      if (number[i] === number[j]) {
+  for (let i = 0; i < n.length; i += 1) {
+    for (let j = 0; j <= n.length; j += 1) {
+      if (n[i] === n[j]) {
         count += 1;
       }
-      if (count >= 3 || number[i] < 0 || number[i] > 9) {
+      if (count >= 3 || n[i] < 0 || n[i] > 9) {
         return 'não é possível gerar um número de telefone com esses valores';
       }
     }
     count = 0;
   }
-  let resultado = ['(', number[0], number[1], ') ', number[2], number[3], number[4], number[5], number[6], '-', number[7], number[8], number[9], number[10]];
-  return resultado.join('');
+  let result = ['(', n[0], n[1], ') ', n[2], n[3], n[4], n[5], n[6], '-', n[7], n[8], n[9], n[10]];
+  return result.join('');
 }
 
 // Desafio 12
 function triangleCheck(lineA, lineB, lineC) {
   let valor;
-  if ( lineA < lineB + lineC && lineA > Math.abs(lineB - lineC) && lineB < lineA + lineC && lineB > Math.abs(lineC - lineC) && lineC < lineB + lineA && lineC > Math.abs(lineB - lineA)) {
+  let ab = lineA - lineB;
+  let bc = lineB - lineC;
+  let ac = lineA - lineC;
+  let abs = lineA + lineB;
+  let bcs = lineB + lineC;
+  let acs = lineA + lineC;
+  if (lineA < bcs && lineA > Math.abs(bc)
+    && lineB < acs && lineB > Math.abs(ac)
+    && lineC < abs && lineC > Math.abs(ab)) {
     valor = true;
-  } else if (lineA > lineB + lineC || lineB > lineA + lineC || lineC > lineB + lineA) {
+  } else if (lineA > bcs || lineB > acs || lineC > abs) {
     valor = false;
-  } else if (lineA > Math.abs(lineB - lineC) || lineB > Math.abs(lineC - lineC) || lineC > Math.abs(lineB - lineA)) {
+  } else if (lineA > Math.abs(bc) || lineB > Math.abs(ac) || lineC > Math.abs(ab)) {
     valor = false;
   }
   return valor;
@@ -35,20 +43,17 @@ function triangleCheck(lineA, lineB, lineC) {
 // Desafio 13
 function hydrate(parametro) {
   let valor;
-  let numeros = parametro.replace(/[^0-9]/g, '');
+  let numeros = parametro.replace(/[^0-9]/g, '').split('');
   let total = 0;
-  numeros = numeros.split('');
   let arrayNumeros = [];
   const string1 = ' copo de água';
   const string2 = ' copos de água';
-
   for (let i = 0; i < numeros.length; i += 1) {
-    arrayNumeros.push(parseInt(numeros[i]));
+    arrayNumeros.push(parseInt(numeros[i], 10));
   }
   for (let i = 0; i < arrayNumeros.length; i += 1) {
     total += arrayNumeros[i];
   }
-
   if (total === 1) {
     valor = total + string1;
   } else {
